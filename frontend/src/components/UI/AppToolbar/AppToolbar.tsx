@@ -19,8 +19,8 @@ const AppToolbar = () => {
     return (
         <AppBar position="sticky" sx={{ mb: 2 }}>
             <Toolbar>
-                <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                    <Link to="/">Forum</Link>
+                <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+                    <Link to="/">Everything you can find</Link>
                 </Typography>
                 <Grid item>
                     {user ? (

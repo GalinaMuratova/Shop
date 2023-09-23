@@ -31,6 +31,14 @@ const UserSchema = new Schema<IUser, UserModel, IUserMethods>({
         required: true,
         unique: true
     },
+    displayName: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
     token: {
         type: String,
         required: true
@@ -45,7 +53,7 @@ UserSchema.pre('save', async function (next){
 });
 
 UserSchema.set('toJSON', {
-    transform:(doc, ret, options) => {
+    transform:(doc, ret) => {
         delete ret.password;
         return ret;
     }

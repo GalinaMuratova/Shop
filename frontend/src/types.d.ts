@@ -2,12 +2,16 @@ export interface IUser {
     _id: string,
     username: string,
     password: string,
-    token: string
+    token: string,
+    displayName: string,
+    phone: string
 }
 
 export interface RegisterMutation {
     username: string,
-    password: string
+    password: string,
+    displayName: string,
+    phone: string
 }
 
 export interface RegisterResponse {

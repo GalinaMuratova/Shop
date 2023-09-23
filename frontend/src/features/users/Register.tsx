@@ -10,7 +10,9 @@ import { register } from './usersThunk';
 const Register = () => {
     const [state, setState] = useState<RegisterMutation>({
         username: '',
-        password: ''
+        password: '',
+        phone:'',
+        displayName:''
     });
     const dispatch = useAppDispatch();
     const error = useAppSelector(selectRegisterError);
@@ -29,8 +31,7 @@ const Register = () => {
             await dispatch(register(state)).unwrap();
             navigate('/');
         } catch (e) {
-
-            // error happened
+            // error
         }
     };
 
@@ -82,6 +83,30 @@ const Register = () => {
                                 onChange={inputChangeHandler}
                                 error={Boolean(getFieldError('password'))}
                                 helperText={getFieldError('password')}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                required
+                                label="Dispaly name"
+                                name="displayName"
+                                autoComplete="new-username"
+                                value={state.displayName}
+                                onChange={inputChangeHandler}
+                                error={Boolean(getFieldError('displayName'))}
+                                helperText={getFieldError('displayName')}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                required
+                                label="Phone number"
+                                name="phone"
+                                autoComplete="new-username"
+                                value={state.phone}
+                                onChange={inputChangeHandler}
+                                error={Boolean(getFieldError('phone'))}
+                                helperText={getFieldError('phone')}
                             />
                         </Grid>
                     </Grid>

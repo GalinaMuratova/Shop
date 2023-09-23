@@ -20,7 +20,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
             <Button
                 color="inherit"
             >
-                Hello, {user.username}
+                Hello, {user.displayName}
             </Button>
             <Button color="inherit" component={Link} to="post/new">
                 Add post
