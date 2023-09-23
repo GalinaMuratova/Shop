@@ -38,3 +38,12 @@ export const createProduct = createAsyncThunk<void, ProductMutation, { state: Ro
         await axiosApi.post('/products', formData, {headers: {'Authorization': userState.user?.token}});
     }
 );
+
+export const deleteProduct = createAsyncThunk<void, string,{ state: RootState}>(
+    'products/delete',
+    async (idProduct,thunkAPI) => {
+        const userState = thunkAPI.getState().users;
+
+        await axiosApi.delete(`/products/${idProduct}`, {headers: {'Authorization': userState.user?.token}});
+    }
+)

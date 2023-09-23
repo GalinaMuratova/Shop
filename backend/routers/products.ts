@@ -23,7 +23,7 @@ productsRouter.get('/', async (req, res) => {
 
 productsRouter.get('/:id', async (req, res) => {
     try {
-        const product = await Product.findById(req.params.id).populate('user', 'displayName');
+        const product = await Product.findById(req.params.id).populate('user', 'displayName phone');
         if (!product) {
             return res.sendStatus(404);
         }
@@ -58,5 +58,22 @@ productsRouter.post('/', auth,  imagesUpload.single('image'), async (req, res, n
         next(e);
     }
 });
+
+productsRouter.delete('/:id', auth, async (req, res, next) => {
+    try {
+        const user = (req as RequestWithUser).user;
+        const product = await Product.findOne({_id: req.params.id, user: user._id});
+
+        if (!product) {
+            return res.sendStatus(403);
+        }
+        await Product.deleteOne({_id: req.params.id});
+
+        return res.sendStatus(204);
+    } catch (e) {
+        next(e);
+    }
+});
+
 
 export default productsRouter;

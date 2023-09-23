@@ -15,6 +15,11 @@ export interface IProduct {
     price:number;
     category: string;
     image: string;
+    user: {
+        _id: string,
+        displayName: string,
+        phone: string
+    }
 }
 export interface ProductMutation {
     category: string
