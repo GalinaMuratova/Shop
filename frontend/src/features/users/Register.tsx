@@ -29,7 +29,7 @@ const Register = () => {
         event.preventDefault();
         try {
             await dispatch(register(state)).unwrap();
-            navigate('/');
+            navigate('/login');
         } catch (e) {
             // error
         }

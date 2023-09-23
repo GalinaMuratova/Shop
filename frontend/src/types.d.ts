@@ -1,3 +1,5 @@
+import {CATEGORIES} from "./constants";
+
 export interface IUser {
     _id: string,
     username: string,
@@ -5,6 +7,22 @@ export interface IUser {
     token: string,
     displayName: string,
     phone: string
+}
+
+export interface IProduct {
+    _id: string;
+    title: string;
+    description: string;
+    price:number;
+    category: CATEGORIES;
+    image: string;
+}
+export interface ProductMutation {
+    category: string
+    title: string;
+    description: string;
+    price:string;
+    image: File | null
 }
 
 export interface RegisterMutation {
