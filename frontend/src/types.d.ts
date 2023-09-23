@@ -1,4 +1,3 @@
-import {CATEGORIES} from "./constants";
 
 export interface IUser {
     _id: string,
@@ -14,7 +13,7 @@ export interface IProduct {
     title: string;
     description: string;
     price:number;
-    category: CATEGORIES;
+    category: string;
     image: string;
 }
 export interface ProductMutation {

@@ -5,6 +5,8 @@ import { IUser } from '../../../types';
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {logout} from "../../../features/users/usersThunk";
 import {selectLogoutLoading} from "../../../features/users/usersSlice";
+import LogoutIcon from '@mui/icons-material/Logout';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 interface Props {
     user: IUser;
@@ -19,19 +21,22 @@ const UserMenu: React.FC<Props> = ({user}) => {
         <>
             <Button
                 color="inherit"
+                style={{marginRight:'25px'}}
             >
                 Hello, {user.displayName}
             </Button>
             <Button color="inherit" component={Link} to="product/new">
-                Add post
+                Add product
+                <AddCircleOutlineIcon style={{fontSize:'17px'}}/>
             </Button>
-            <Button color="inherit" onClick={handleLogout} disabled={loading}>
                 {loading ? (
                     <CircularProgress size={24} color="warning" />
                 ) : (
-                    'Logout'
+                    <Button color="inherit" onClick={handleLogout} disabled={loading}>
+                        Logout
+                        <LogoutIcon style={{fontSize:'17px'}}/>
+                    </Button>
                 )}
-            </Button>
         </>
     );
 };

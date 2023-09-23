@@ -31,7 +31,7 @@ const run = async () => {
         user: user1._id,
         category: 'Books',
         description:'Интересная книга на пару вечеров',
-        title: 'Герман Гессе - Степной волк',
+        title: 'Степной волк',
         price: 420,
         image:'german.jpg'
     }, {
@@ -40,21 +40,21 @@ const run = async () => {
         description:'Прекрасного натурального оттенка',
         title: 'Румяна',
         price: 420,
-        image:'blush.jpg'
+        image:'blush.jpeg'
     }, {
         user: user2._id,
         category: 'Clothing',
         description:'Футболки лучшего качества',
         title: 'Футболки с котиками',
         price: 420,
-        image:'t-shirt.jpg'
+        image:'t-shirt.webp'
     },{
         user: user2._id,
         category: 'Computers',
         description:'Самый мощный игровой ноутбук',
         title: 'Ноутбук',
         price: 100020,
-        image:'laptop.jpg'
+        image:'laptop.png'
     })
     await db.close();
 };
