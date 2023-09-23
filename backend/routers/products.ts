@@ -7,6 +7,31 @@ import {imagesUpload} from "../multer";
 
 const productsRouter = express.Router();
 
+productsRouter.get('/', async (req, res) => {
+   try {
+       if (req.query.category) {
+           const products = await Product.find({category: req.query.category}).populate('user', 'displayName');
+           return res.send(products);
+       } else {
+           const products = await Product.find().populate('user', 'displayName');
+           return res.send(products);
+       }
+   } catch (e) {
+       return res.sendStatus(500);
+   }
+});
+
+productsRouter.get('/:id', async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id).populate('user', 'displayName');
+        if (!product) {
+            return res.sendStatus(404);
+        }
+        return res.send(product);
+    } catch {
+        return res.sendStatus(500);
+    }
+});
 productsRouter.post('/', auth,  imagesUpload.single('image'), async (req, res, next) => {
     try {
         const user = (req as RequestWithUser).user;
